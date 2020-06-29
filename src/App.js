@@ -9,7 +9,7 @@ import './App.css';
 
 const initialState = {
   input: '',
-  route: 'home',
+  route: 'signin',
   isSignedIn: false,
   count: read_cookie('countCookie'),
   user: {
