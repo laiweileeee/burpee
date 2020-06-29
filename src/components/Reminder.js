@@ -46,8 +46,9 @@ class Reminder extends Component {
     }
 
     clearReminders = () => {
-        this.setState({ reminders: [] });
-        bake_cookie('reminders', this.state.reminders);
+        const updatedReminders = [];
+        this.setState({ reminders: updatedReminders });
+        bake_cookie('reminders', updatedReminders);
         console.log('clear', this.state.reminders);
     }
 
