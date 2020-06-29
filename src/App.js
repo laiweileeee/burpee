@@ -30,7 +30,7 @@ class App extends Component {
     super();
     this.state = {
       input: '',
-      route: 'login',
+      route: 'signin',
       isSignedIn: false,
       user: {
         id: '',
