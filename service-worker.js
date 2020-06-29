@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/burpee/precache-manifest.7b2a8019cb4aa5f7950089712d0c4540.js"
+  "/burpee/precache-manifest.d76455e80bcac5b6ae6daff421bdaff4.js"
 );
 
 self.addEventListener('message', (event) => {
