@@ -23,13 +23,6 @@ class Milestone extends Component {
             <h2 className="tc mt5 white shadow-4 pt3 pb3">Mystery Rewards</h2>
          
                  <nav>                
-                 <button
-                    onClick={() => onRouteChange('signin')}
-                    className="btn btn-secondary signout-button black grow shadow-4 ma0 mr5"
-                    type="button">
-                    Sign Out
-                    </button>
-
                 <button
                     onClick={() => onRouteChange('home')}
                     className="btn btn-secondary home-button black grow shadow-4 ma0 ml5"
@@ -38,8 +31,8 @@ class Milestone extends Component {
                  </button>
                  </nav>
                  
-                 <p className="text1 tc white">Click on the cards to unlock rewards.</p>  
-                 <p className="text2 tc white">{this.props.count} Item(s) consumed before expiry!</p>
+                 <p className="text1 tc white">Click on the cards find out how many items it takes to unlock rewards!</p>  
+                 <p className="text2 tc white">Item(s) consumed before expiry: {this.props.count ? this.props.count : `0`} </p>
                 <div>
                     <CardList count={this.props.count} pokemon={pokemon} />
                 </div>

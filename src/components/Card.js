@@ -31,7 +31,7 @@ class Card extends Component {
                 if (unlockedList.includes(id)) { //unlocked cards
                     //do nothing
                 } else { // locked cards
-                    alert(`Reward locked.. Consume ${countReq - count} more items to unlock your reward!`);
+                    alert(`Reward locked. Consume ${countReq - count} more items to unlock your reward! :)`);
                 }
             }
         }
@@ -48,9 +48,9 @@ class Card extends Component {
 
     renderChildClass = (id) => {
         if (unlockedList.includes(id)) {
-            return 'tc bg-washed-blue br3 pa10 ma2 bw3 shadow-3 ba grow child z-1';
+            return 'tc bg-washed-blue br3 pa10 ma2 bw3 ba grow child z-1 shadow';
         } else {
-            return 'tc bg-washed-blue br3 pa10 ma2 bw3 shadow-3 ba grow child';
+            return 'tc bg-washed-blue br3 pa10 ma2 bw3 ba grow child';
         }
     }
 
@@ -67,7 +67,7 @@ class Card extends Component {
                             <div className="bw2 ba pa1 bg-washed-green">
                                 <p className="ma0 pa1 bt">No. <strong>{id}</strong></p>
                                 <p className="b pa1">
-                                    Height: {height} <br />
+                                Height: {height} <br />
                                 Weight: {weight} <br />
                                 Type: {type}
                                 </p>

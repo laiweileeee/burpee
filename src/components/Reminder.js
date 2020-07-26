@@ -27,7 +27,9 @@ class Reminder extends Component {
     }
 
     addReminders = () => {
-        if (this.state.input && this.state.dueDate) {
+        const currentDate = moment().format();
+        //Inputs must in the future
+        if (this.state.input && this.state.dueDate > currentDate) {
             const reminder = {
                 id: Math.random(),
                 text: this.state.input,
@@ -38,15 +40,20 @@ class Reminder extends Component {
             this.setState({ input: '' })
             document.getElementById("myForm").value = '';
             bake_cookie('reminders', this.state.reminders);
-            console.log('added reminders', this.state.reminders);
-            console.log('curernt date', this.state.reminders.dueDate);
-            console.log('js date', moment(new Date()))
-
+            // console.log('added reminders', this.state.reminders);
+            // console.log('curernt date', this.state.reminders.dueDate);
+            // console.log('js date', moment(new Date()))
+            //render notifications
+            const item = this.state.input;
+            const time = moment(new Date(this.state.dueDate)).fromNow();
+            this.renderAddConfirmation(item, time);
+        } else {
+            alert('Missing inputs or invalid inputs. Date set must be in the future. Please re-enter valid inputs!')
         }
     }
 
-    clearReminders = () => {
-        this.setState({ reminders: [] });
+    clearReminders = async () => {
+        await this.setState({ reminders: [] });
         bake_cookie('reminders', this.state.reminders);
         console.log('clear', this.state.reminders);
     }
@@ -106,17 +113,7 @@ class Reminder extends Component {
             }
         });
     }
-
-    //wrapper functions
-    wrapperAdd = () => {
-        const item = this.state.input;
-        const time = moment(new Date(this.state.dueDate)).fromNow();
-        this.addReminders();
-        if (this.state.input && this.state.dueDate) {
-            this.renderAddConfirmation(item, time);
-        }
-    }
-
+    
     wrapperComplete = (reminder) => {
         this.props.completeReminders(reminder);
         this.deleteReminders(reminder.id);
@@ -137,16 +134,10 @@ class Reminder extends Component {
         const { onRouteChange } = this.props;
         return (
             <div className="App">
-                <button
-                    onClick={() => onRouteChange('signin')}
-                    className="btn btn-secondary signout-button black grow shadow-4"
-                    type="button">
-                    Sign Out
-                        </button>
                 <div className="title br3">
                     <div className="header">
                         <hr></hr>
-                        <h1 className="shadow-3 pa2 burpee"><strong> &#x23F0; B U R P E E </strong></h1>
+                        <h1 className="pa2 br2 burpee"><strong> &#x23F0; B U R P E E </strong></h1>
                     </div>
                 </div>
                 <div className="form-inline">
@@ -167,7 +158,7 @@ class Reminder extends Component {
                             />
 
                             <button
-                                onClick={this.wrapperAdd}
+                                onClick={this.addReminders}
                                 className="add-btn btn btn-success grow add-button br2 shadow-4"
                                 type="button">
                                 &#xff0b;
